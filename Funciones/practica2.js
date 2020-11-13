@@ -13,16 +13,15 @@ function save(palabra) {
   else {
     var nuevoValor;
 
-    // busca que valor es el mismo y lo actualiza (aumenta)
+    // busca que valor es el mismo y lo actualiza (aumenta su valor)
     for (var valor of palabras.values()) {
       if (palabras.get(palabra) == valor) {
         nuevoValor = valor + 1;
         palabras.delete(palabra);
+        palabras.set(palabra, nuevoValor);
         break;
       }
     }
-
-    palabras.set(palabra, nuevoValor);
   }
 }
 
