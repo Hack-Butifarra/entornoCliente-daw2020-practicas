@@ -14,11 +14,11 @@ function orderAlphabetically() {
     var elementoUl = document.getElementById('lista');
     while (elementoUl.firstChild) elementoUl.removeChild(elementoUl.firstChild); // eliminamos los elementos <li> de la lista <ul>
 
-    /* -- En Desarrollo-- 
-    var antiguoH1 = document.getElementsByTagName('h1');
+    var antiguoH1 = document.getElementsByTagName('h1')[0]; // seleccionamos la primera etiqueta <h1> que aparece en el HTML
+    var elementoPadre = antiguoH1.parentNode;
     var nuevoH1 = document.createElement('h1');
-    nuevoH1.innerHTML = 'Llista de Paraules Ordenades Alfabeticament<hr />';
-    elemento.replaceChild(nuevoH1, antiguoH1[0]); // reemplazamos el contenido de la etiqueta h1*/
+    nuevoH1.innerHTML = 'Llista de Paraules Ordenades Alfabeticament';
+    elementoPadre.replaceChild(nuevoH1, antiguoH1); // reemplazamos el contenido de la etiqueta h1
 
     // creamos un elemento <li> y lo escribimos en el documento
     for (var palabra of arrayOrdenado) {
