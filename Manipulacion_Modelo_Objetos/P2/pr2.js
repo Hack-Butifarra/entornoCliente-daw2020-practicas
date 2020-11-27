@@ -21,7 +21,7 @@ function showCookie() {
   // busca el nombre de la cookie (contador) y nos muestra su valor
   for (let cookie of listaCookies) {
     let [nombre, valor] = cookie.split('=');
-    if (nombre == ' contador') {
+    if (nombre == 'contador') {
       document.write(nombre + ': ' + valor);
       break;
     }
@@ -45,7 +45,7 @@ function getValue() {
   // busca el nombre de la cookie (contador) y nos devuelve su valor
   for (let cookie of listaCookies) {
     let [nombre, valor] = cookie.split('=');
-    if (nombre == ' contador') {
+    if (nombre == 'contador') {
       valorContador = valor;
       break;
     }
