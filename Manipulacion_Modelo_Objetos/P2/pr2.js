@@ -44,7 +44,7 @@ function getValue() {
 
   // busca el nombre de la cookie (contador) y nos devuelve su valor
   for (let cookie of listaCookies) {
-    var [nombre, valor] = cookie.split('=');
+    let [nombre, valor] = cookie.split('=');
     if (nombre == ' contador') {
       valorContador = valor;
       break;
