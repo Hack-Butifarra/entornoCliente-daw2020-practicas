@@ -1,4 +1,4 @@
-* {
+body {
     background-color: black;
 }
 
@@ -12,4 +12,44 @@ header {
     color: wheat;
     font-weight: bold;
     font-size: 20px;
+}
+
+main {
+    display: none;
+}
+
+main form p:last-child {
+    font-size: 12px;
+}
+
+main form p a:hover {
+    color: blue;;
+}
+
+form {
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+    margin: 0 auto;
+    width: 300px;
+    font-weight: bold;
+    font-size: 18px;
+    color:steelblue;
+}
+
+form p {
+    margin: 15px;
+}
+
+form p:last-child {
+    text-align: center;
+}
+
+input[type='button'] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    text-decoration: none;
+    cursor: pointer;
 }
