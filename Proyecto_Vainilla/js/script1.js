@@ -25,3 +25,8 @@ function start() {
     document.getElementsByTagName('main')[0].style.display = 'block';
 }
 
+function isValidEmail(email) {
+    const expReg = new RegExp("^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})$");
+    return expReg.test(email);
+}
+
