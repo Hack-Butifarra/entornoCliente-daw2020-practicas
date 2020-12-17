@@ -1,6 +1,6 @@
 'use strict'
 
-chargingScreen()
+chargingScreen();
 
 function chargingScreen() {
     const tiempo = 5000; // tiempo en ms
@@ -9,7 +9,7 @@ function chargingScreen() {
         window.removeEventListener('keyup',myEvent,false);
         start();
     }, tiempo);
-    
+
     let myEvent = window.addEventListener('keyup', () => {
         let event = window.event;
         if (event.ctrlKey && event.keyCode == 121) {
@@ -19,4 +19,9 @@ function chargingScreen() {
     }, false);
 }
 
-function start() { document.write('hola'); } // test
+function start() { 
+    document.getElementsByTagName('header')[0].style.display = 'none'; 
+    document.body.style.backgroundColor = 'white';
+    document.getElementsByTagName('main')[0].style.display = 'block';
+}
+
