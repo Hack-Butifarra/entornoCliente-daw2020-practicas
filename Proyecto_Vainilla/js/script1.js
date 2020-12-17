@@ -4,6 +4,7 @@ chargingScreen()
 
 function chargingScreen() {
     const tiempo = 5000; // tiempo en ms
+
     let timer = setTimeout(() => {
         window.removeEventListener('keyup',myEvent,false);
         start();
