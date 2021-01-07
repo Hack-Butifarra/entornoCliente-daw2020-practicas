@@ -1,7 +1,7 @@
 'use strict'
 
 chargingScreen();
-window.addEventListener('onclick',screen1,false);
+window.addEventListener('blur',screen1,true);
 
 function chargingScreen() {
     const tiempo = 5000; // tiempo en ms
@@ -27,16 +27,15 @@ function start() {
 }
 
 function screen1() {
-    if (isValidEmail) {
-        window.location.href="http://127.0.0.1:5500/Proyecto_Vainilla/index2.html";
-    } else {
-       
+    var email = document.getElementById('email').value;
+    console.log(email);
+    const expReg = new RegExp("^\w+([\.-]?)*\w*@+a-z+\.+a-z{2,4}$"); // validar correctamente email  *fallo
+    console.log(expReg.test(email));
+
+    if (expReg.test())
+        window.location.href = "pantalla2.html";
+    else {
+        document.getElementsByTagName('button')[0].style.display = 'block';
+        document.forms[0].elements[0].focus();
     }
 }
-
-function isValidEmail() {
-    let email = document.getElementsByName('email').values;
-    const expReg = new RegExp("^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})$");
-    return expReg.test(email);
-}
-
