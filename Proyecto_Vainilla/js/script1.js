@@ -29,7 +29,7 @@ function start() {
 function screen1() {
     var email = document.getElementById('email').value;
     console.log(email);
-    const expReg = new RegExp("^\w+([\.-]?)*\w*@+a-z+\.+a-z{2,4}$"); // validar correctamente email  *fallo
+    const expReg = new RegExp("^\w+([\.-]?)*\w*@+a-z+\.+a-z{2,4}$"); // validar correctamente email *fallo
     console.log(expReg.test(email));
 
     if (expReg.test()) {
