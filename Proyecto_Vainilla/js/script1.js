@@ -32,8 +32,14 @@ function screen1() {
     const expReg = new RegExp("^\w+([\.-]?)*\w*@+a-z+\.+a-z{2,4}$"); // validar correctamente email  *fallo
     console.log(expReg.test(email));
 
-    if (expReg.test())
+    if (expReg.test()) {
+        var hoy = new Date();
+        var fecha = hoy.getDay() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
+        var hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
+        
+        document.cookie = "email=" + email + ";fecha=" + fecha + ";hora=" + hora;
         window.location.href = "pantalla2.html";
+    }
     else {
         document.getElementsByTagName('button')[0].style.display = 'block';
         document.forms[0].elements[0].focus();
