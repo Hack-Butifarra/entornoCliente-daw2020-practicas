@@ -28,16 +28,16 @@ function start() {
 
 function screen1() {
     var email = document.getElementById('email').value;
-    console.log(email);
     const expReg = new RegExp("^\w+([\.-]?)*\w*@+a-z+\.+a-z{2,4}$"); // validar correctamente email *fallo
-    console.log(expReg.test(email));
 
-    if (expReg.test()) {
+    if (true) {  //expReg.test(email)
         var hoy = new Date();
         var fecha = hoy.getDay() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
         var hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
         
-        document.cookie = "email=" + email + ";fecha=" + fecha + ";hora=" + hora;
+        document.cookie = "email=" + email;
+        document.cookie = "fecha=" + fecha;
+        document.cookie = "hora=" + hora;
         window.location.href = "pantalla2.html";
     }
     else {
