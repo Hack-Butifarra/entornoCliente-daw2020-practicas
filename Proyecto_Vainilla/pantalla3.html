@@ -9,8 +9,37 @@
 </head>
 <body>
     <h1>Pantalla 3</h1>
-    <main>
 
+    <main>
+        <section>
+            <form>
+                <p>Pregunta</p>
+                <p><textarea name="texto" rows="4" cols="20" required></textarea></p>
+                <input type="radio" id="verdadero" value="v"> Verdadero
+                <input type="radio" id="falso" value="f"> Falso
+                <p>Puntuacion <input id="puntuacion" type="number" placeholder="0-9" min="0" max="9" required /></p>
+                <button type="button">Atras</button>
+                <button type="button">Grabar</button>
+            </form>
+        </section>
+        <br>
+        <section>
+            <table border="1">
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Respuesta</th>
+                    <th>Puntuacion</th>
+                    <th>Estado</th>
+                </tr>
+
+                <tr>
+                    <td>Pregunta 1</td>
+                    <td>Verdaero</td>
+                    <td>5</td>
+                    <td>OK</td>
+                </tr>
+            </table>
+        </section>
     </main>
 
     <script src="js/script3.js"></script>
