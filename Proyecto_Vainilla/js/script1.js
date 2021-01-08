@@ -32,7 +32,7 @@ function screen1() {
 
     if (true) {  //expReg.test(email)
         var hoy = new Date();
-        var fecha = hoy.getDay() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear();
+        var fecha = convert(hoy.getDate()) + "/" + convert(hoy.getMonth() + 1) + "/" + hoy.getFullYear();
         var hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
         
         document.cookie = "email=" + email;
@@ -44,4 +44,11 @@ function screen1() {
         document.getElementsByTagName('button')[0].style.display = 'block';
         document.forms[0].elements[0].focus();
     }
+}
+
+function convert(valor) { // convierte un numero de una cifra en dos cifras
+    if (valor < 10)
+        valor = "0" + valor;
+
+    return valor;
 }
