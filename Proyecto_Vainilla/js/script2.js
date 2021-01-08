@@ -12,7 +12,7 @@ parrafo2.innerHTML = 'La ultima vez que entraste fue ' + fecha + ' a las ' + hor
 elementoPadre.appendChild(parrafo1);
 elementoPadre.appendChild(parrafo2);
 
-window.addEventListener('click', () => {
+window.addEventListener('onclick', () => {
     window.location.href = "pantalla3.html";
 }, false);
 
