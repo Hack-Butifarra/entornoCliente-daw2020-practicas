@@ -9,7 +9,7 @@ var parrafo1 = document.createElement('p');
 var parrafo2 = document.createElement('p');
 parrafo1.innerHTML = 'Hola ' + email;
 parrafo2.innerHTML = 'La ultima vez que entraste fue ' + fecha + ' a las ' + hora;
-elementoPadre.appendChild(parrafo1,parrafo2);
+elementoPadre.appendChild(parrafo1);
 elementoPadre.appendChild(parrafo2);
 
 window.addEventListener('click', () => {
