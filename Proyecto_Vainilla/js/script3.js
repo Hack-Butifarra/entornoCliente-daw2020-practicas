@@ -3,6 +3,8 @@
 let tiempo = 5000;
 setTimeout(createTable,tiempo);
 
+document.addEventListener('blur',checkform,true);
+
 var btnAtras = document.getElementById('atras');
 btnAtras.addEventListener('click', () => {
     window.location.href = "pantalla2.html";
@@ -32,4 +34,16 @@ function createEncabezado(valor) {
     var columna = document.createElement('th');
     columna.innerHTML = valor;
     return columna;
+}
+
+function checkform() {
+    var canSubmit = false;
+    var text = document.getElementById('texto').value;
+    var puntuacion = document.getElementById('puntuacion').value;
+
+    if ((document.getElementById('v').checked || document.getElementById('f').checked) && text != null && puntuacion != 0)
+        canSubmit = true;
+
+    if (canSubmit) 
+        document.getElementById('grabar').disabled = false;
 }
