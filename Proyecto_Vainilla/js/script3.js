@@ -3,12 +3,15 @@
 let tiempo = 5000;
 setTimeout(createTable,tiempo);
 
-document.addEventListener('blur',checkform,true);
+document.addEventListener('blur',checkForm,true);
 
 var btnAtras = document.getElementById('atras');
 btnAtras.addEventListener('click', () => {
     window.location.href = "pantalla2.html";
 }, false);
+
+var btnGrabar = document.getElementById('grabar');
+btnGrabar.addEventListener('click',save,false);
 
 function createTable() {
     var parrafo = document.getElementById('preguntas'); // seleccionamos la primera etiqueta <h1> que aparece en el HTML
@@ -36,7 +39,7 @@ function createEncabezado(valor) {
     return columna;
 }
 
-function checkform() {
+function checkForm() {
     var canSubmit = false;
     var text = document.getElementById('texto').value;
     var puntuacion = document.getElementById('puntuacion').value;
@@ -46,4 +49,8 @@ function checkform() {
 
     if (canSubmit) 
         document.getElementById('grabar').disabled = false;
+}
+
+function save() {
+    document.getElementById('atras').disabled = "disabled";
 }
