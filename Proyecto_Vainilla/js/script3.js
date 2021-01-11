@@ -11,7 +11,29 @@ btnAtras.addEventListener('click', () => {
 }, false);
 
 var btnGrabar = document.getElementById('grabar');
-btnGrabar.addEventListener('click',save,false);
+btnGrabar.addEventListener('click',() => {
+    document.getElementById('atras').disabled = "disabled";
+
+    var tabla = document.getElementById('tabla');
+    var fila = document.createElement('tr');
+    tabla.appendChild(fila);
+
+    var pregunta = document.getElementById('texto').value;
+    var puntuacion = document.getElementById('puntuacion').value;
+    var respuesta = getValue();
+
+    var columna1 = createColumn(pregunta);
+    var columna2 = createColumn(respuesta);
+    var columna3 = createColumn(puntuacion);
+    var columna4 = createColumn('Guardando...');
+
+    fila.appendChild(columna1);
+    fila.appendChild(columna2);
+    fila.appendChild(columna3);
+    fila.appendChild(columna4);
+
+    setTimeout(save,tiempo);
+}, false);
 
 function createTable() {
     var parrafo = document.getElementById('preguntas'); // seleccionamos la primera etiqueta <h1> que aparece en el HTML
@@ -52,5 +74,18 @@ function checkForm() {
 }
 
 function save() {
-    document.getElementById('atras').disabled = "disabled";
+    
+}
+
+function createColumn(valor) {
+    var columna = document.createElement('td');
+    columna.innerHTML = valor;
+    return columna;
+}
+
+function getValue() {
+    if (document.getElementById('v').checked)
+        return document.getElementById('v').value;
+    else
+        return document.getElementById('f').value;
 }
