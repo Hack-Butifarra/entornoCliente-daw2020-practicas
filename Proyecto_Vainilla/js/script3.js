@@ -1,5 +1,6 @@
 'use strict'
 
+var contador = 0;
 let tiempo = 5000;
 setTimeout(createTable,tiempo);
 
@@ -31,6 +32,9 @@ btnGrabar.addEventListener('click',() => {
     fila.appendChild(columna2);
     fila.appendChild(columna3);
     fila.appendChild(columna4);
+
+    document.getElementsByTagName('form')[0].reset();
+    document.getElementById('grabar').disabled = "disabled";
 
     setTimeout(save,tiempo);
 }, false);
@@ -74,12 +78,40 @@ function checkForm() {
 }
 
 function save() {
-    
+    var estado = document.getElementById('ultimo'); // seleccionamos la primera etiqueta <h1> que aparece en el HTML
+    var elementoPadre = estado.parentNode;
+    var actualizar = document.createElement('td');
+
+    var table = document.getElementById("tabla");
+
+    try {
+        document.cookie = "pregunta=" + table.rows[0].cells[0].innerHTML;
+        document.cookie = "respuesta=" + table.rows[0].cells[1].innerHTML;
+        document.cookie = "puntuacion=" + table.rows[0].cells[2].innerHTML;
+        document.cookie = "estado=" + table.rows[0].cells[3].innerHTML;
+
+        actualizar.innerHTML = 'OK';
+    } catch (error) {
+        actualizar.innerHTML = 'ERROR';
+        console.error(error);
+    } finally {
+        document.cookie = "estado=" + actualizar.innerHTML;
+        elementoPadre.replaceChild(actualizar, estado);
+    }
+
+    contador++;
+
+    if (contador == document.getElementsByTagName('tr').length - 1)
+        document.getElementById('atras').disabled = false;
 }
 
 function createColumn(valor) {
     var columna = document.createElement('td');
     columna.innerHTML = valor;
+
+    if (valor == "Guardando...")
+        columna.setAttribute('id','ultimo');
+
     return columna;
 }
 
