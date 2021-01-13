@@ -1,5 +1,5 @@
 const BASE_URL = 'https://reqres.in/api/users/';
-const POSTMAN_URL = 'https://httpbin.org/post';
+const POST_URL = 'https://httpbin.org/post';
 
 //Código principal dentro del evento load
 // para asegurar la carga de los componentes
