@@ -1,8 +1,8 @@
 'use strict'
 
-var email = search('email');
-var fecha = search('fecha');
-var hora = search('hora');
+var email = await search('email');
+var fecha = await search('fecha');
+var hora = await search('hora');
 
 var elementoPadre = document.getElementsByTagName('main')[0];
 var parrafo1 = document.createElement('p');
@@ -17,7 +17,7 @@ boton.addEventListener('click', () => {
     window.location.href = "pantalla3.html";
 }, false);
 
-function search(campo) {
+async function search(campo) {
     let dato;
     let listaCookies = document.cookie.split(';');
 
