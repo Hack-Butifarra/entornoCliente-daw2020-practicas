@@ -57,6 +57,9 @@ function createTable() {
     fila.appendChild(columna2);
     fila.appendChild(columna3);
     fila.appendChild(columna4);
+
+    if (existsInfo)
+        showCookies(tabla);
 }
 
 function createEncabezado(valor) {
@@ -83,25 +86,23 @@ function save() {
     var actualizar = document.createElement('td');
 
     var table = document.getElementById("tabla");
-
+    
     try {
-        document.cookie = "pregunta=" + table.rows[0].cells[0].innerHTML;
-        document.cookie = "respuesta=" + table.rows[0].cells[1].innerHTML;
-        document.cookie = "puntuacion=" + table.rows[0].cells[2].innerHTML;
-        document.cookie = "estado=" + table.rows[0].cells[3].innerHTML;
+        document.cookie = "pregunta=" + table.rows[contador].cells[0].innerHTML;
+        document.cookie = "respuesta=" + table.rows[contador].cells[1].innerHTML;
+        document.cookie = "puntuacion=" + table.rows[contador].cells[2].innerHTML;
+        document.cookie = "estado=" + table.rows[contador].cells[3].innerHTML;
 
         actualizar.innerHTML = 'OK';
+        contador++;
     } catch (error) {
         actualizar.innerHTML = 'ERROR';
         console.error(error);
-    } finally {
-        document.cookie = "estado=" + actualizar.innerHTML;
-        elementoPadre.replaceChild(actualizar, estado);
-    }
+    } 
 
-    contador++;
-
-    if (contador == document.getElementsByTagName('tr').length - 1)
+    elementoPadre.replaceChild(actualizar, estado);
+    
+    if (contador == document.getElementsByTagName('tr').length)
         document.getElementById('atras').disabled = false;
 }
 
@@ -120,4 +121,34 @@ function getValue() {
         return document.getElementById('v').value;
     else
         return document.getElementById('f').value;
+}
+
+function showCookies(tabla) {
+    var fila = document.createElement('tr');
+    tabla.appendChild(fila);
+    let listaCookies = document.cookie.split(';');
+
+    // busca el nombre de la cookie y almacena su valor
+    for (let cookie of listaCookies) {
+        let [nombre, valor] = cookie.split('=');
+        if (nombre.trim() != 'email' && nombre.trim() != 'fecha' && nombre.trim() != 'hora') {
+            var columna = createColumn(valor);
+            fila.appendChild(columna);
+        }
+    }
+
+    contador++;
+}
+
+function existsInfo() {
+    let listaCookies = document.cookie.split(';');
+
+    // busca el nombre de la cookie y almacena su valor
+    for (let cookie of listaCookies) {
+        let [nombre,valor] = cookie.split('=');
+        if (nombre.trim() == 'pregunta')
+            return true;
+        else
+            return false;
+    }
 }
