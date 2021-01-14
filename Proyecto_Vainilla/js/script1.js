@@ -28,9 +28,9 @@ function start() {
 
 function screen1() {
     var email = document.getElementById('email').value;
-    const expReg = new RegExp("^\w+([\.-]?)*\w*@+a-z+\.+a-z{2,4}$"); // validar correctamente email *fallo
+    const expReg = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"); // validar correctamente email *fallo
 
-    if (true) {  //expReg.test(email)
+    if (expReg.test(email)) { 
         var hoy = new Date();
         var fecha = convert(hoy.getDate()) + "/" + convert(hoy.getMonth() + 1) + "/" + hoy.getFullYear();
         var hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
