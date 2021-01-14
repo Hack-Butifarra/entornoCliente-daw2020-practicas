@@ -16,6 +16,7 @@ btnGrabar.addEventListener('click',() => {
     document.getElementById('atras').disabled = "disabled";
 
     var tabla = document.getElementById('tabla');
+    var filaActual = document.getElementsByTagName('tr').length;
     var fila = document.createElement('tr');
     tabla.appendChild(fila);
 
@@ -36,7 +37,7 @@ btnGrabar.addEventListener('click',() => {
     document.getElementsByTagName('form')[0].reset();
     document.getElementById('grabar').disabled = "disabled";
 
-    setTimeout(save,tiempo);
+    setTimeout(save,tiempo,filaActual);
 }, false);
 
 function createTable() {
@@ -80,8 +81,7 @@ function checkForm() {
         document.getElementById('grabar').disabled = false;
 }
 
-function save() {
-    let contador = document.getElementsByTagName('tr').length - 1;
+function save(fila) {
     var estado = document.getElementById('ultimo'); // seleccionamos la primera etiqueta <h1> que aparece en el HTML
     var elementoPadre = estado.parentNode;
     var actualizar = document.createElement('td');
@@ -89,21 +89,21 @@ function save() {
     var table = document.getElementById("tabla");
     
     try {
-        document.cookie = "pregunta" + contador + "=" + table.rows[contador].cells[0].innerHTML;
-        document.cookie = "respuesta" + contador + "=" + table.rows[contador].cells[1].innerHTML;
-        document.cookie = "puntuacion" + contador + "=" + table.rows[contador].cells[2].innerHTML;
-        document.cookie = "estado" + contador + "=" + table.rows[contador].cells[3].innerHTML;
+        document.cookie = "pregunta" + fila + "=" + table.rows[fila].cells[0].innerHTML;
+        document.cookie = "respuesta" + fila + "=" + table.rows[fila].cells[1].innerHTML;
+        document.cookie = "puntuacion" + fila + "=" + table.rows[fila].cells[2].innerHTML;
+        document.cookie = "estado" + fila + "=" + table.rows[fila].cells[3].innerHTML;
 
         actualizar.innerHTML = 'OK';
+        document.cookie = "estado" + fila + "=" + actualizar.innerHTML;
     } catch (error) {
         actualizar.innerHTML = 'ERROR';
         console.error(error);
     } finally {
-        document.cookie = "estado" + contador + "=" + actualizar.innerHTML;
         elementoPadre.replaceChild(actualizar, estado);
     }
     
-   
+    if (fila == document.getElementsByTagName('tr').length - 1)
         document.getElementById('atras').disabled = false;
 }
 
@@ -159,7 +159,7 @@ function existsInfo() {
     }
 }
 
-function deleteCookie(valor) { // desarrollo (no funcional)
+function deleteCookie(valor) { // desarrollo (no funcional) solo test
     document.cookie = "estado" + valor + "=; max-age=0";
     document.cookie = "pregunta"+ valor + "=; max-age=0";
     document.cookie = "respuesta" + valor + "=; max-age=0";
