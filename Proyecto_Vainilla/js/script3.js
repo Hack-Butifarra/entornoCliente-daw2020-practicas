@@ -12,7 +12,7 @@ btnAtras.addEventListener('click', () => {
 }, false);
 
 var btnGrabar = document.getElementById('grabar');
-btnGrabar.addEventListener('click',() => {
+btnGrabar.addEventListener('click', async () => {
     document.getElementById('atras').disabled = "disabled";
 
     var tabla = document.getElementById('tabla');
@@ -37,7 +37,7 @@ btnGrabar.addEventListener('click',() => {
     document.getElementsByTagName('form')[0].reset();
     document.getElementById('grabar').disabled = "disabled";
 
-    setTimeout(save,tiempo,filaActual);
+    await setTimeout(save,tiempo,filaActual);
 }, false);
 
 function createTable() {
@@ -59,8 +59,8 @@ function createTable() {
     fila.appendChild(columna3);
     fila.appendChild(columna4);
 
-    
-    showCookies(tabla);
+    if (existsQuestion)
+        showCookies(tabla);
 }
 
 function createEncabezado(valor) {
@@ -126,37 +126,41 @@ function getValue() {
 
 function showCookies(tabla) {
     let listaCookies = document.cookie.split(';');
-    let cont = 0;
+    let contador = 0;
 
     for (let cookie of listaCookies) {
         let [nombre, valor] = cookie.split('=');
         if (nombre.trim() != 'email' && nombre.trim() != 'fecha' && nombre.trim() != 'hora') {
-            if (cont == 0) {
+            if (contador == 0) {
                 var fila = document.createElement('tr');
                 tabla.appendChild(fila);
             }
 
             var columna = createColumn(valor);
             fila.appendChild(columna);
-            cont++;
+            contador++;
 
-            if (cont == 4)
-                cont = 0;
+            if (contador == 4)
+                contador = 0;
         }
     }
 }
 
-function existsInfo() {
+function existsQuestion() {
     let listaCookies = document.cookie.split(';');
+    let exits = false;
 
     // busca el nombre de la cookie y almacena su valor
     for (let cookie of listaCookies) {
-        let nombre = cookie.split('=');
-        if (nombre.trim() == 'pregunta')
-            return true;
-        else
-            return false;
+        let [nombre,valor] = cookie.split('=');
+        let nuevoNombre = nombre.trim(); // quita los espacios en blanco
+        if (nuevoNombre.substr(0,nuevoNombre.length - 1) == 'pregunta') {
+            exits = true;
+            break;
+        }
     }
+
+    return exits;
 }
 
 function deleteCookie(valor) { // desarrollo (no funcional) solo test
