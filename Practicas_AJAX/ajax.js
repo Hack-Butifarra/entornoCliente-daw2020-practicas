@@ -24,12 +24,12 @@ function clearFields() {
 
 async function procesarFetch(numsecs, user) {
   try {
-    const response = await fetch(BASE_URL);
+    const response = await fetch(BASE_URL + user);
     const cliente = await response.json();
     let email = document.getElementById('email');
     email.innerHTML = cliente.data.email;
   } catch (error){
-    let email = document.getElementById('status');
-    email.innerHTML = error;
+    let status = document.getElementById('status');
+    status.innerHTML = error;
   }
 }
