@@ -1,6 +1,5 @@
 'use strict'
 
-let vecesPulsados = 0;
 let tiempo = 5000;
 setTimeout(createTable,tiempo);
 
