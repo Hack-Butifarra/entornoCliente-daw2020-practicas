@@ -12,7 +12,7 @@ btnAtras.addEventListener('click', () => {
 }, false);
 
 var btnGrabar = document.getElementById('grabar');
-btnGrabar.addEventListener('click', async () => {
+btnGrabar.addEventListener('click',async () => {
     document.getElementById('atras').disabled = "disabled";
 
     var tabla = document.getElementById('tabla');
@@ -37,7 +37,10 @@ btnGrabar.addEventListener('click', async () => {
     document.getElementsByTagName('form')[0].reset();
     document.getElementById('grabar').disabled = "disabled";
 
-    await setTimeout(save,tiempo,filaActual);
+    await new Promise(() => {
+        setTimeout(save,tiempo,filaActual)
+    });
+
 }, false);
 
 function createTable() {
