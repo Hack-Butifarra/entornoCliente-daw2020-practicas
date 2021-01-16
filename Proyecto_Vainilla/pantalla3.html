@@ -11,19 +11,24 @@
     <h1>Pantalla 3</h1>
 
     <main>
-        <section>
+        <section class="form">
             <form>
-                <p>Pregunta</p>
-                <p><textarea id="texto" rows="4" cols="20"></textarea></p>
-                <p>
+                <label for="pregunta">
+                    <span>Pregunta</span> <textarea name="pregunta" id="texto" rows="4" cols="20"></textarea>
+                </label>
+                <label for="radio">
                     <input type="radio" id="v" name="respuesta" value="verdadero">
                     <label for="v">Verdadero</label>
                     <input type="radio" id="f"  name="respuesta" value="falso">
                     <label for="f">Falso</label>
-                </p>
-                <p>Puntuacion <input id="puntuacion" type="number" placeholder="0-9" min="0" max="9" /></p>
-                <button id="atras" type="button">Atras</button>
-                <button id="grabar" type="button" disabled="disabled">Grabar</button>
+                </label>
+                <label for="puntuacion">
+                    <span>Puntuacion</span> <input name="puntuacion" id="puntuacion" type="number" placeholder="0-9" min="0" max="9" />
+                </label>
+                <label for="button">
+                    <button id="atras" type="button">Atras</button>
+                    <button id="grabar" type="button" disabled="disabled">Grabar</button>
+                </label>
             </form>
         </section>
         <br>
