@@ -22,8 +22,8 @@ function clearFields() {
   });
 }
 
-async function procesarFetch(numsecs, user) {
-  setTimeout(() => {
+function procesarFetch(numsecs, user) {
+  setTimeout(async () => {
     try {
       const response = await fetch(BASE_URL + user);
       const cliente = await response.json();
@@ -33,5 +33,5 @@ async function procesarFetch(numsecs, user) {
       let status = document.getElementById('status');
       status.innerHTML = error;
     }
-  }, numsecs);
+  }, numsecs * 1000);
 }
