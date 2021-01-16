@@ -1,0 +1,8 @@
+main {
+    display: flex;
+    vertical-align: center;
+}
+
+.tabla {
+    margin-left: 50px;
+}
