@@ -23,15 +23,23 @@ function clearFields() {
 }
 
 function procesarFetch(numsecs, user) {
+  let response;
+
   setTimeout(async () => {
     try {
-      const response = await fetch(BASE_URL + user);
+      response = await fetch(BASE_URL + user);
       const cliente = await response.json();
+
+      let id = document.getElementById('id');
+      id.innerHTML = cliente.data.id;
+
       let email = document.getElementById('email');
       email.innerHTML = cliente.data.email;
     } catch (error){
+      console.log('ERROR: ' + error.message);
+    } finally {
       let status = document.getElementById('status');
-      status.innerHTML = error;
+      status.innerHTML = response.status;
     }
   }, numsecs * 1000);
 }
