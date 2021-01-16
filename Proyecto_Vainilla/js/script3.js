@@ -3,7 +3,7 @@
 let tiempo = 5000;
 setTimeout(createTable,tiempo);
 
-document.addEventListener('blur',checkForm,true);
+document.addEventListener('blur',checkForm,true); // comprueba que todos los campos del form esten completados y no vacios
 
 var btnAtras = document.getElementById('atras');
 btnAtras.addEventListener('click', () => {
@@ -15,7 +15,7 @@ btnGrabar.addEventListener('click',async () => {
     document.getElementById('atras').disabled = "disabled";
 
     var tabla = document.getElementById('tabla');
-    var filaActual = document.getElementsByTagName('tr').length;
+    var filaActual = document.getElementsByTagName('tr').length; // obtemos la fila actual donde se esta guardando la pregunta y le pasamos el valor a la funcion save()
     var fila = document.createElement('tr');
     tabla.appendChild(fila);
 
@@ -43,8 +43,8 @@ btnGrabar.addEventListener('click',async () => {
 }, false);
 
 function createTable() {
-    var parrafo = document.getElementById('preguntas'); // seleccionamos la primera etiqueta <h1> que aparece en el HTML
-    var elementoPadre = parrafo.parentNode;
+    var parrafo = document.getElementById('preguntas'); // seleccionamos el parrafo (Cargando Preguntas)
+    var elementoPadre = parrafo.parentNode; // obtenemos la etiqueta padre (<section>) en el bloque donde se encuentra la etiqueta (<p>)
     var tabla = document.createElement('table');
     tabla.setAttribute('id','tabla');
     elementoPadre.replaceChild(tabla, parrafo);
@@ -84,8 +84,8 @@ function checkForm() {
 }
 
 function save(fila) {
-    var estado = document.getElementById('ultimo'); // seleccionamos la primera etiqueta <h1> que aparece en el HTML
-    var elementoPadre = estado.parentNode;
+    var estado = document.getElementById('ultimo'); // seleccionamos la ultima columna (Estado)
+    var elementoPadre = estado.parentNode; // obtenemos la etiqueta padre (<tr>) en el bloque donde se encuentra la etiqueta (<td>)
     var actualizar = document.createElement('td');
 
     var table = document.getElementById("tabla");
@@ -120,6 +120,7 @@ function createColumn(valor) {
 }
 
 function getValue() {
+    // Comprueba que campo del radio (Verdadero o Falso) esta seleccionado
     if (document.getElementById('v').checked)
         return document.getElementById('v').value;
     else
@@ -130,9 +131,10 @@ function showCookies(tabla) {
     let listaCookies = document.cookie.split(';');
     let contador = 0;
 
+    // guarda los valores de las cookies (pregunta,respuesta,puntuacion,estado) en la tabla
     for (let cookie of listaCookies) {
         let [nombre, valor] = cookie.split('=');
-        if (nombre.trim() != 'email' && nombre.trim() != 'fecha' && nombre.trim() != 'hora') {
+        if (nombre.trim() != 'email' && nombre.trim() != 'fecha' && nombre.trim() != 'hora') { // Comprueba que el nombre (id) de la cookie no sea el email, la fecha o la hora
             if (contador == 0) {
                 var fila = document.createElement('tr');
                 tabla.appendChild(fila);
@@ -142,7 +144,7 @@ function showCookies(tabla) {
             fila.appendChild(columna);
             contador++;
 
-            if (contador == 4)
+            if (contador == 4)  // Cuando se guarda los valores de las cookies en las 4 columnas, se reestblace el contador
                 contador = 0;
         }
     }
@@ -152,7 +154,7 @@ function existsQuestion() {
     let listaCookies = document.cookie.split(';');
     let exits = false;
 
-    // busca el nombre de la cookie y almacena su valor
+    // busca solo el nombre (id) de la cookie y comprueba si hay alguna pregunta guardada en la tabla
     for (let cookie of listaCookies) {
         let nombres = cookie.split('=');
         for (let i = 0; i < nombres.length; i += 2) {
@@ -167,7 +169,10 @@ function existsQuestion() {
     return exits;
 }
 
-function deleteCookie(valor) { // desarrollo (no funcional) solo test
+// ***ESTE CODIGO NO ES NECESARIO, SOLO SE UTLIZA PARA ELIMINAR LAS COOKIES DEL NAVEGADOR DE LA PAGINA DESDE LA PROPIA CONSOLA DEL NAVEGADOR (SOLO TESTING)***
+// DEJO ESTE CODIGO POR SI LO QUIERES UTILIZAR
+
+function deleteCookie(valor) { // VALOR = A LA VARIABLE "FILA" QUE SE ENCUENTRA EN LA FUNCION SAVE()
     document.cookie = "estado" + valor + "=; max-age=0";
     document.cookie = "pregunta"+ valor + "=; max-age=0";
     document.cookie = "respuesta" + valor + "=; max-age=0";
