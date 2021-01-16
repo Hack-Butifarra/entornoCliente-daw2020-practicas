@@ -3,6 +3,49 @@ main {
     vertical-align: center;
 }
 
+input[type=text], textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+label[for="radio"], label[for="puntuacion"]  {
+  display: block;
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+}
+
+label[for="button"] {
+  display: block;
+  text-align: center;
+}
+
+/* Add a background color and some padding around the form */
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
 .tabla {
-    margin-left: 50px;
+  border-collapse: collapse;
+  margin-left: 50px;
+  text-align: center;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+  padding: 12px 15px;
+}
+
+tr:nth-of-type(even) {
+  background-color: #f3f3f3;
 }
