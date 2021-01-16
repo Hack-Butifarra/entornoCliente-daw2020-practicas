@@ -154,7 +154,7 @@ function existsQuestion() {
     let listaCookies = document.cookie.split(';');
     let exits = false;
 
-    // busca solo el nombre (id) de la cookie y comprueba si hay alguna pregunta guardada en la tabla
+    // busca si existe el campo (pregunta) en la cookie, esto nos indica si hay alguna pregunta guardada en la tabla o no
     for (let cookie of listaCookies) {
         let nombres = cookie.split('=');
         for (let i = 0; i < nombres.length; i += 2) {
