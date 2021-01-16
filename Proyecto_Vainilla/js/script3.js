@@ -154,11 +154,13 @@ function existsQuestion() {
 
     // busca el nombre de la cookie y almacena su valor
     for (let cookie of listaCookies) {
-        let [nombre,valor] = cookie.split('=');
-        let nuevoNombre = nombre.trim(); // quita los espacios en blanco
-        if (nuevoNombre.substr(0,nuevoNombre.length - 1) == 'pregunta') {
-            exits = true;
-            break;
+        let nombres = cookie.split('=');
+        for (let i = 0; i < nombres.length; i += 2) {
+            let nuevoNombre = nombres[i].trim(); // quita los espacios en blanco
+            if (nuevoNombre.substr(0,nuevoNombre.length - 1) == 'pregunta') {
+                exits = true;
+                break;
+            }
         }
     }
 
