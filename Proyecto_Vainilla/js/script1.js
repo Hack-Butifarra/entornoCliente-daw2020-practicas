@@ -28,7 +28,7 @@ function start() {
 
 function screen1() {
     var email = document.getElementById('email').value;
-    const expReg = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"); // validar correctamente email *fallo
+    const expReg = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"); 
 
     if (expReg.test(email)) { 
         var hoy = new Date();
