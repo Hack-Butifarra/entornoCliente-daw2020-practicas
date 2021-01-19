@@ -3,7 +3,7 @@
 let tiempo = 5000;
 setTimeout(createTable,tiempo);
 
-document.addEventListener('blur',checkForm,true); // comprueba que todos los campos del form esten completados y no vacios
+document.addEventListener('blur',checkForm,true);
 
 var btnAtras = document.getElementById('atras');
 btnAtras.addEventListener('click', () => {
@@ -71,6 +71,7 @@ function createEncabezado(valor) {
     return columna;
 }
 
+// comprueba que todos los campos del form esten completados y no vacios
 function checkForm() {
     var canSubmit = false;
     var text = document.getElementById('texto').value;
