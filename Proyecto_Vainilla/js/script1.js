@@ -46,7 +46,8 @@ function screen1() {
     }
 }
 
-function convert(valor) { // convierte un numero de una cifra en dos cifras
+// convierte un numero de una cifra en dos cifras
+function convert(valor) {
     if (valor < 10)
         valor = "0" + valor;
 
