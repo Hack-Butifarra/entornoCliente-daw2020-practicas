@@ -33,7 +33,7 @@ function screen1() {
     if (expReg.test(email)) { 
         var hoy = new Date();
         var fecha = convert(hoy.getDate()) + "/" + convert(hoy.getMonth() + 1) + "/" + hoy.getFullYear();
-        var hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
+        var hora = convert(hoy.getHours()) + ":" + convert(hoy.getMinutes()) + ":" + convert(hoy.getSeconds());
         
         document.cookie = "email=" + email;
         document.cookie = "fecha=" + fecha;
