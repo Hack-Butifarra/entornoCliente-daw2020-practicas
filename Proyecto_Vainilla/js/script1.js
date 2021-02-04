@@ -1,7 +1,8 @@
 'use strict'
 
 chargingScreen();
-window.addEventListener('blur',screen1,true);
+let form = document.getElementsByTagName('main')[0];
+form.addEventListener('blur',screen1,true);
 
 function chargingScreen() {
     const tiempo = 5000; // tiempo en ms
