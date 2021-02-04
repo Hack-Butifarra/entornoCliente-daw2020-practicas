@@ -1,7 +1,8 @@
 'use strict'
 
 chargingScreen();
-window.addEventListener('blur',screen1,true);
+let form = document.getElementsByTagName('form')[0];
+form.addEventListener('blur',screen1,true);
 
 function chargingScreen() {
     const tiempo = 5000; // tiempo en ms
@@ -28,7 +29,7 @@ function start() {
 
 function screen1() {
     var email = document.getElementById('email').value;
-    const expReg = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"); 
+    const expReg = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
 
     if (expReg.test(email)) { 
         var hoy = new Date();
